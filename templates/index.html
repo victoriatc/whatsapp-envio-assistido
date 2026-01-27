@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Envio WhatsApp</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<script>
+function atualizarLinks() {
+    const msg = encodeURIComponent(document.getElementById("msg").value);
+    document.querySelectorAll("a[data-tel]").forEach(a=>{
+        a.href = "https://wa.me/55" + a.dataset.tel + "?text=" + msg;
+    });
+}
+
+function enviarTodos() {
+    const links = document.querySelectorAll("a[data-tel]");
+    let delay = 0;
+    links.forEach(link=>{
+        setTimeout(() => {
+            window.open(link.href, "_blank");
+        }, delay);
+        delay += 6000;
+    });
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+    <h2>📲 Envio WhatsApp</h2>
+
+    <form method="POST" action="/adicionar" class="form-add">
+        <input name="nome" placeholder="Nome" required>
+        <input name="telefone" placeholder="Telefone" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <label>Mensagem:</label>
+    <textarea id="msg" rows="3" placeholder="Digite a mensagem..." oninput="atualizarLinks()"></textarea>
+
+    <button class="btn-enviar-todos" onclick="enviarTodos()">Enviar para todos</button>
+
+    {% for c in contatos %}
+    <div class="contato">
+        <span>{{ c.nomes }} <small>— {{ c.status }}</small></span>
+
+        <div class="acoes">
+            <a data-tel="{{ c.telefones }}" target="_blank">Enviar</a>
+
+            <form method="POST" action="/deletar">
+                <input type="hidden" name="telefone" value="{{ c.telefones }}">
+                <button type="submit" class="btn-delete">Deletar</button>
+            </form>
+
+            <form method="POST" action="/marcar">
+                <input type="hidden" name="telefone" value="{{ c.telefones }}">
+                <button type="submit" class="btn-marcar">Marcar enviada</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>

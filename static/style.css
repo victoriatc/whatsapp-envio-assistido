@@ -1,0 +1,105 @@
+body { background-color: lightblue; }
+h1 { color: navy; }
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 520px;
+    margin: 70px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+h2 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+.form-add input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.form-add button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #25d366;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin: 8px 0;
+}
+
+.btn-enviar-todos {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #1ebe5d;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.contato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.contato span {
+    font-weight: 500;
+    color: #444;
+}
+
+.acoes {
+    display: flex;
+    gap: 6px;
+}
+
+.acoes a,
+.acoes button {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    background: #25d366;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.btn-delete {
+    background: #e74c3c;
+}
+
+.btn-marcar {
+    background: #3498db;
+}
+
+.acoes a:hover,
+.acoes button:hover {
+    opacity: 0.85;
+}
